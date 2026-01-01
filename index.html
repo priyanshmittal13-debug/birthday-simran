@@ -2,44 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Simran 🎉</title>
+<title>Happy Birthday Simran 🖤</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffd6e8, #fff6d1);
+  background: radial-gradient(circle at top, #1b1b2f, #000);
+  color: #fff;
   text-align: center;
   overflow-x: hidden;
 }
 
 h1 {
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 2.5rem;
+  color: #ff79c6;
 }
 
 #nickname {
   font-size: 1.6rem;
   margin-top: 10px;
-  color: #ff5fa2;
-  font-weight: 600;
+  color: #ffd700;
   min-height: 30px;
 }
 
+/* IMAGE */
+.photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  margin: 30px auto;
+  background: url('simran.jpg') center/cover no-repeat;
+  box-shadow: 0 0 40px rgba(255,121,198,0.6);
+}
+
+/* BUTTON */
 button {
-  padding: 14px 28px;
+  padding: 14px 30px;
   font-size: 1rem;
   border: none;
   border-radius: 30px;
-  background: #ff5fa2;
+  background: linear-gradient(45deg,#ff79c6,#bd93f9);
   color: white;
   cursor: pointer;
-  margin-top: 30px;
-}
-
-button:hover {
-  background: #ff3d90;
+  margin-top: 20px;
 }
 
 /* CARD */
@@ -51,7 +59,7 @@ button:hover {
 
 .card {
   width: 320px;
-  height: 420px;
+  height: 440px;
   margin: auto;
   position: relative;
   transform-style: preserve-3d;
@@ -66,17 +74,11 @@ button:hover {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: white;
+  background: #121212;
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 0 40px rgba(255,121,198,0.4);
   backface-visibility: hidden;
   padding: 25px;
-}
-
-.front {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .back {
@@ -86,63 +88,58 @@ button:hover {
   overflow-y: auto;
 }
 
-/* CONFETTI */
-.confetti {
+/* FLOATING */
+.floating {
   position: fixed;
-  width: 10px;
-  height: 10px;
-  top: -10px;
-  animation: fall linear infinite;
+  font-size: 22px;
+  animation: float linear infinite;
+  opacity: 0.8;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-120vh); }
 }
 </style>
 </head>
 
 <body>
 
-<h1>🎂 Happy Birthday Simran 🎉</h1>
+<h1>Happy Birthday Simran 🖤</h1>
 <div id="nickname"></div>
+
+<div class="photo"></div>
 
 <button onclick="startSurprise()">🎁 Tap for Surprise</button>
 
-<!-- CARD -->
 <div class="card-container" id="cardBox">
   <div class="card" id="card">
 
-    <!-- PAGE 1 -->
-    <div class="card-face front">
-      <h2>Happy Birthday 🎉</h2>
-      <p>
-        To the girl jiske saath<br>
-        life kabhi boring ho hi nahi sakti 😄
-      </p>
-      <p style="margin-top:20px;">👉 Tap to flip</p>
+    <div class="card-face">
+      <h2>🎂 Happy Birthday</h2>
+      <p>Some people don’t need decoration,  
+      they *are* the vibe ✨</p>
+      <p>👉 Tap to flip</p>
     </div>
 
-    <!-- PAGE 2 -->
     <div class="card-face back">
       <p>
-        Happy Birthday, Simran ✨<br><br>
+        Happy Birthday, Simran 🖤<br><br>
 
-        Tumhari life mein kalesh ka quota thoda zyada hi chalta hai —
-        matlab har din ek naya episode 😭.
-        Drama, reactions, stories — sab next level.
-        Mood swings ke saath surprise element free aata hai,
-        but honestly wahi cheez tumhe alag banati hai 😄.<br><br>
+        Tumhari life mein drama aur kalesh ka
+        permanent subscription hai 😭,
+        par wahi cheez tumhe interesting banati hai.
+        Mood swings, stories, reactions —
+        sab kuch next level entertainment.<br><br>
 
         Hume mile zyada time nahi hua,
-        but phir bhi tumne is year ko mere liye unexpectedly special bana diya.
-        Tumhari kuch harkatein bahut zyada cute hoti hain,
-        bilkul bacho wali — aur haan,
-        story telling aur kalesh dono mein tum unbeatable ho 😌.<br><br>
+        par tumne is year ko
+        unexpectedly special bana diya.
+        Kuch harkatein tumhari itni cute hoti hain
+        ki bina smile aaye rehna mushkil hai 😌.<br><br>
 
-        Stay expressive, dramatic, aur full of life.
-        Happy Birthday once again 💛<br><br>
+        Stay dramatic, expressive
+        aur hamesha tum hi raho ✨<br><br>
 
         — Fishu 🐟
       </p>
@@ -151,51 +148,45 @@ button:hover {
   </div>
 </div>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 /* TYPEWRITER */
 const text = "🐟 Fishu 🐟";
-let index = 0;
+let i = 0;
 
 function typeWriter() {
-  if (index < text.length) {
-    document.getElementById("nickname").innerHTML += text.charAt(index);
-    index++;
+  if (i < text.length) {
+    document.getElementById("nickname").innerHTML += text.charAt(i);
+    i++;
     setTimeout(typeWriter, 120);
   }
 }
 
-/* SURPRISE */
 function startSurprise() {
   document.getElementById("cardBox").style.display = "block";
   document.getElementById("bgMusic").play();
-  createConfetti();
   typeWriter();
+  floating();
 }
 
-/* FLIP CARD */
 document.getElementById("card").addEventListener("click", function () {
   this.classList.toggle("flip");
 });
 
-/* CONFETTI */
-function createConfetti() {
-  for (let i = 0; i < 120; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.background =
-      ["#ff5fa2", "#ffd700", "#7bed9f", "#70a1ff"][
-        Math.floor(Math.random() * 4)
-      ];
-    confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 5000);
+/* FLOATING ELEMENTS */
+function floating() {
+  const items = ["🎈","💖","✨","🎂"];
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement("div");
+    el.classList.add("floating");
+    el.innerText = items[Math.floor(Math.random()*items.length)];
+    el.style.left = Math.random()*100 + "vw";
+    el.style.animationDuration = (Math.random()*6+4) + "s";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),10000);
   }
 }
 </script>
